@@ -5,7 +5,7 @@ class Qurban extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // cek_login();
+        check_login();
         $this->load->model('Main_model', 'mm');
         $this->load->library('form_validation');
     }
@@ -18,7 +18,7 @@ class Qurban extends CI_Controller {
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);
         $this->load->view('templates/topbar.php');
-        $this->load->view('qurban/index.php', $data);
+        $this->load->view('qurban.php', $data);
         $this->load->view('templates/footer.php');
     }
 
@@ -35,7 +35,7 @@ class Qurban extends CI_Controller {
             redirect('qurban');
         } else {
             $input = $this->input->post();
-            $jumlah = $this->mm->counts('tb_qurban', 'qurban_status', $input['status']);
+            $jumlah = $this->mm->count_where('tb_qurban', 'qurban_status', $input['status']);
             $tambah = $jumlah + 1;
             $input_data = [
                 'qurban_status' => $input['status'],

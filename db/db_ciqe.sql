@@ -110,7 +110,7 @@ CREATE TABLE `tb_total` (
 --
 
 CREATE TABLE `tb_user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` text NOT NULL,
   `user_pass` text NOT NULL,
   `user_level` enum('Admin','Petugas') NOT NULL,

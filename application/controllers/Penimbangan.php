@@ -5,7 +5,7 @@ class Penimbangan extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // cek_login();
+        check_login();
         $this->load->model('Main_model', 'mm');
         $this->load->library('form_validation');
     }
@@ -18,7 +18,7 @@ class Penimbangan extends CI_Controller {
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);
         $this->load->view('templates/topbar.php');
-        $this->load->view('timbangan/index.php', $data);
+        $this->load->view('timbangan.php', $data);
         $this->load->view('templates/footer.php');
     }
 
@@ -75,4 +75,14 @@ class Penimbangan extends CI_Controller {
         }
         redirect('penimbangan');
     }
+    public function delete($id)
+    {
+        $delete = $this->mm->delete('tb_penimbangan', 'penimbangan_id', $id);
+        if ($delete) {
+            $this->session->set_flashdata('message', "<div class='alert alert-success'><strong>SUCCESS!</strong> Data berhasil dihapus. <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+        } else {
+            $this->session->set_flashdata('message', "<div class='alert alert-danger'><strong>SUCCESS!</strong> Data gagal dihapus. <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+        }
+        redirect('penimbangan');
+	}
 }

@@ -5,10 +5,10 @@ class Users extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // cek_login();
-        // if (!is_admin()) {
-        //     redirect('dashboard');
-        // }
+        check_login();
+        if (!is_admin()) {
+            redirect('dashboard');
+        }
         $this->load->model('Main_model', 'mm');
         $this->load->library('form_validation');
     }
@@ -20,7 +20,7 @@ class Users extends CI_Controller {
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);
         $this->load->view('templates/topbar.php');
-        $this->load->view('users/index.php', $data);
+        $this->load->view('users.php', $data);
         $this->load->view('templates/footer.php');
     }
     
@@ -51,7 +51,7 @@ class Users extends CI_Controller {
                 'user_name' => $input['name'],
                 'user_pass' => password_hash($input['pass'], PASSWORD_DEFAULT),
                 'user_level' => $input['level'],
-                'user_status' => 0
+                'user_status' => '0'
             ];
             $insert = $this->mm->insert('tb_user', $input_data);
 

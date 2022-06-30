@@ -13,11 +13,13 @@ class Distribusi extends CI_Controller {
     public function index() 
     {
         $data['title'] = 'Distribusi';
+        $this->db->order_by('distribusi_id');
         $data['distribusi'] = $this->mm->get('tb_distribusi');
+        
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);
         $this->load->view('templates/topbar.php');
-        $this->load->view('distribusi/index.php', $data);
+        $this->load->view('distribusi.php', $data);
         $this->load->view('templates/footer.php');
     }
 
