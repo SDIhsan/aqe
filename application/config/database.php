@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> 'postgres://ojphctvhuchwhu:02ecf81f400a7553230043d12efe01cbabb9f15c0940136c74a9738cd45b617e@ec2-3-224-8-189.compute-1.amazonaws.com:5432/ddblbnn9smemgj',
-	'hostname' => '',
-	'username' => '',
-	'password' => '',
+	'hostname' => 'ec2-3-224-8-189.compute-1.amazonaws.com',
+	'username' => 'ojphctvhuchwhu',
+	'password' => '02ecf81f400a7553230043d12efe01cbabb9f15c0940136c74a9738cd45b617e',
 	'database' => 'ddblbnn9smemgj',
 	'dbdriver' => 'postgres',
 	'dbprefix' => '',
