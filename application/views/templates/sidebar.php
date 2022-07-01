@@ -67,7 +67,7 @@
                     <span>Users</span></a>
             </li>
             <?php endif; ?>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Nav Item - User Information -->
