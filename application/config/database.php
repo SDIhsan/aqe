@@ -75,12 +75,36 @@ $query_builder = TRUE;
 
 $db['default'] = 
 [
-	'dsn'	=> 'postgres://ojphctvhuchwhu:02ecf81f400a7553230043d12efe01cbabb9f15c0940136c74a9738cd45b617e@ec2-3-224-8-189.compute-1.amazonaws.com:5432/ddblbnn9smemgj?charset=utf8&connect_timeout=5&sslmode=1',
-	'hostname' => '',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => '',
+	// 'dsn'	=> 'postgres://ojphctvhuchwhu:02ecf81f400a7553230043d12efe01cbabb9f15c0940136c74a9738cd45b617e@ec2-3-224-8-189.compute-1.amazonaws.com:5432/ddblbnn9smemgj?charset=utf8&connect_timeout=5&sslmode=1',
+	'dsn'	=> '',
+	'hostname' => 'ec2-3-224-8-189.compute-1.amazonaws.com',
+	'username' => 'ojphctvhuchwhu',
+	'password' => '02ecf81f400a7553230043d12efe01cbabb9f15c0940136c74a9738cd45b617e',
+	'database' => 'ddblbnn9smemgj',
+	'dbdriver' => 'postgre',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+];
+
+$db['pdo'] = 
+[
+	'dsn' => 'pgsql:host=ec2-3-224-8-189.compute-1.amazonaws.com;port=5432;dbname=ddblbnn9smemgj',
+	'hostname' => 'ec2-3-224-8-189.compute-1.amazonaws.com',
+	'username' => 'ojphctvhuchwhu',
+	'password' => '02ecf81f400a7553230043d12efe01cbabb9f15c0940136c74a9738cd45b617e',
+	'database' => 'ddblbnn9smemgj',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
