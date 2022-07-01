@@ -44,7 +44,7 @@
                     <span>Penimbangan</span></a>
             </li>
 
-
+            <?php if ($this->session->userdata('login_session')['level'] == 'Admin') : ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -66,7 +66,8 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Users</span></a>
             </li>
-
+            <?php endif; ?>
+            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Nav Item - User Information -->
@@ -77,7 +78,7 @@
                     </div>
                     <span class="mr-2 d-none d-lg-inline text-white-600 small"><b>
                     <?= 
-                    $this->session->userdata('login_session')['name'] . ' | ' . $this->session->userdata('login_session')['name'];
+                    $this->session->userdata('login_session')['name'] . ' | ' . $this->session->userdata('login_session')['level'];
                     ?>
                     </b></span>
                 </a>
