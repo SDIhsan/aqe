@@ -18,13 +18,13 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-	// public function __construct()
-    // {
-    //     parent::__construct();
-    //     check_login();
-    //     $this->load->model('Main_model', 'mm');
-    //     $this->load->library('form_validation');
-    // }
+	public function __construct()
+    {
+        parent::__construct();
+        check_login();
+        $this->load->model('Main_model', 'mm');
+        $this->load->library('form_validation');
+    }
 
     public function index() 
     {

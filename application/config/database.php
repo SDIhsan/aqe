@@ -80,7 +80,7 @@ $db['default'] = [
 	'username' => '',
 	'password' => '',
 	'database' => '',
-	'dbdriver' => '',
+	'dbdriver' => 'Postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
