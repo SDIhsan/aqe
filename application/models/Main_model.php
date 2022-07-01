@@ -94,7 +94,7 @@ class Main_model extends CI_Model
         $this->db->select('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
         $this->db->select_sum($field, 'total');
         $this->db->join('tb_qurban', 'tb_penimbangan.penimbangan_qurban = tb_qurban.qurban_id');
-        $this->db->group_by('penimbangan_qurban');
+        $this->db->group_by('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
         return $this->db->get('tb_penimbangan')->result_array();
     }
 }
