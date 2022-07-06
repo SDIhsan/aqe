@@ -52,12 +52,12 @@
                             </div>
                         </div>
                         <div class="row form-group">
-                            <label class="col-md-4 text-md-right" for="jumlah">Jumlah</label>
+                            <label class="col-md-4 text-md-right" for="total">Total</label>
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <input name="jumlah" id="jumlah" type="text" class="form-control" placeholder="Jumlah Penimbangan...">
+                                    <input name="total" min=0 max=1000 id="total" type="text" class="form-control" placeholder="Total Penimbangan...">
                                     <div class="input-group-append">
-                                        <span class="input-group-text" id="satuan">Ons</span>
+                                        <span class="input-group-text" id="satuan">Kg</span>
                                     </div>
                                 </div>
                                 <!-- <?= form_error('volume', '<small class="text-danger">', '</small>'); ?> -->
@@ -79,7 +79,7 @@
                         <tr class="bg-dark text-white">
                             <th class="text-center">#</th>
                             <th class="text-center">Status (Kelompok / Pribadi) - Shohibul</th>
-                            <th class="text-center">Ke</th>
+                            <!-- <th class="text-center">Ke</th> -->
                             <th class="text-center">Massa (Kg)</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -93,8 +93,8 @@
                         <tr>
                             <td class=" align-middle font-weight-bold text-center" width="5%"><?= $no++; ?></td>
                             <td class=" align-middle" width="53%"><?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?></td>
-                            <td class=" align-middle text-center" width="10%"><?= $p['penimbangan_ke']; ?></td>
-                            <td class=" align-middle text-center" width="20%"><?= $p['penimbangan_jumlah']; ?></td>
+                            <!-- <td class=" align-middle text-center" width="10%"><?= $p['penimbangan_ke']; ?></td> -->
+                            <td class=" align-middle text-center" width="20%"><?= $p['penimbangan_total']; ?></td>
                             <td class=" align-middle text-center" width="12%">
                                 <div class="form-button-action">
                                     <a data-toggle="modal" data-target="#Update<?= $p['penimbangan_id'] ?>" title="" class="btn btn-link btn-warning" data-original-title="Update <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
@@ -124,18 +124,10 @@
                                                                 <h5 class="text-center"><b><?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?></b></h5>
                                                                 <hr>
                                                                 <div class="row form-group">
-                                                                    <label class="col-md-3 text-md-right" for="ke">Ke</label>
+                                                                    <label class="col-md-3 text-md-right" for="total">Total</label>
                                                                     <div class="col-md-9">
                                                                         <div class="input-group">
-                                                                            <input type="text" name="ke" value="<?= $p['penimbangan_ke']; ?>" class="form-control" placeholder="Ke" aria-label="Ke" aria-describedby="basic-addon1">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row form-group">
-                                                                    <label class="col-md-3 text-md-right" for="jumlah">Jumlah</label>
-                                                                    <div class="col-md-9">
-                                                                        <div class="input-group">
-                                                                            <input type="number" name="jumlah" min=0 value="<?= $p['penimbangan_jumlah']; ?>" class="form-control" placeholder="Jumlah" aria-label="Jumlah" aria-describedby="basic-addon2">
+                                                                            <input type="text" name="total" min=0 max=1000 value="<?= $p['penimbangan_total']; ?>" class="form-control" placeholder="Jumlah" aria-label="Jumlah" aria-describedby="basic-addon2">
                                                                         </div>
                                                                     </div>
                                                                 </div>

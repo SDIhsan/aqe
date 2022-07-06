@@ -26,7 +26,7 @@ class Penimbangan extends CI_Controller {
     private function _validasi()
     {
         $this->form_validation->set_rules('shohibul','Shohibul', 'required');
-        $this->form_validation->set_rules('jumlah','Jumlah', 'required');
+        $this->form_validation->set_rules('total','Total', 'required');
     }
 
     public function add() 
@@ -37,11 +37,11 @@ class Penimbangan extends CI_Controller {
         } else {
             $input = $this->input->post();
             $jumlah = $this->mm->count_where('tb_penimbangan', 'penimbangan_qurban', $input['shohibul']);
-            $ke = $jumlah + 1;
+            // $ke = $jumlah + 1;
             $input_data = [
                 'penimbangan_qurban' => $input['shohibul'],
-                'penimbangan_ke' => $ke,
-                'penimbangan_jumlah' => $input['jumlah']
+                // 'penimbangan_ke' => $ke,
+                'penimbangan_total' => $input['total']
             ];
             $insert = $this->mm->insert('tb_penimbangan', $input_data);
 
@@ -56,15 +56,15 @@ class Penimbangan extends CI_Controller {
 
     public function update($id) 
     {
-        $this->form_validation->set_rules('ke','Ke', 'required');
-        $this->form_validation->set_rules('jumlah','Jumlah', 'required');
+        // $this->form_validation->set_rules('ke','Ke', 'required');
+        $this->form_validation->set_rules('total','Total', 'required');
         if ($this->form_validation->run() == false) {
             $this->session->set_flashdata('message', "<div class='alert alert-danger'><strong>ERROR!</strong> <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
         } else {
             $input = $this->input->post();
             $input_data = [
-                'penimbangan_ke' => $input['ke'],
-                'penimbangan_jumlah' => $input['jumlah']
+                // 'penimbangan_ke' => $input['ke'],
+                'penimbangan_total' => $input['total']
             ];
             $insert = $this->mm->update('tb_penimbangan', 'penimbangan_id', $id, $input_data);
 

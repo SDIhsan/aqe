@@ -149,7 +149,7 @@
                             <i class="fas fa-circle text-success"></i> 2/3 Bagian
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Minus Dua
+                            <i class="fas fa-circle text-info"></i> Minus 3.5
                         </span>
                     </div>
                 </div>
@@ -196,72 +196,6 @@
                                 endif;
                                 ?>
                             </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-lg-3">
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table" id="dashboardTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th class="align-middle">#</th>
-                                    <th class="align-middle">Distribusi</th>
-                                    <th class="align-middle">Massa (KG)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                $no = 1;
-                                $t = 0;
-                                if ($distribusi) :
-                                    foreach ($distribusi as $dt) :
-                                ?>
-                                <tr>
-                                    <td class="font-weight-bold"><?= $no++; ?></td>
-                                    <td><?= $dt['distribusi_ket']; ?></td>
-                                    <td><?= number_format((float)$dt['distribusi_jumlah'], 2, '.', ''); ?></td>
-                                </tr>
-                                <?php
-                                    $t = $t + $dt['distribusi_jumlah'];
-                                    endforeach;
-                                endif;
-                                ?>
-                            </tbody>
-                        </table>
-                        <hr>
-                        <table class="table" id="dashboardTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Total</th>
-                                    <th><?= $t; ?></th>
-                                </tr>
-                                <tr>
-                                    <th>2/3 Daging</th>
-                                    <th>
-                                        <?php 
-                                        $dpt = number_format((float)$daging * 2 / 3, 2, '.', '');
-                                        echo $dpt;
-                                        ?>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>Selisih</th>
-                                    <th>
-                                        <?php 
-                                        $slh = $dpt - $t; 
-                                        echo $slh;
-                                        ?>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>TK Kesalahan</th>
-                                    <th><?= number_format((float)$slh / $t * 100, 2, '.', ''); ?>%</th>
-                                </tr>
-                            </thead>
                         </table>
                     </div>
                 </div>

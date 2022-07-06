@@ -298,12 +298,12 @@
         var myPieChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Sepertiga", "Duapertiga", "Minusdua"],
+            labels: ["Sepertiga", "Duapertiga", "MinusTigaSetengah"],
             datasets: [{
             data: [
                 <?= number_format((float)$daging/3, 2, '.', ''); ?>,
                 <?= number_format((float)$daging*2/3, 2, '.', ''); ?>,
-                <?= number_format((float)2*$shohibul, 2, '.', ''); ?>
+                <?= number_format((float)3.5*$shohibul, 2, '.', ''); ?>
             ],
             backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],

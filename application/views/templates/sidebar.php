@@ -53,13 +53,6 @@
                 Addons
             </div>
 
-            <!-- Nav Item - Distribusi -->
-            <li class="nav-item <?php if( $this->uri->segment(1) == 'distribusi' ) { echo 'active'; } ?>">
-                <a class="nav-link" href="<?= site_url('distribusi'); ?>">
-                    <i class="fas fa-fw fa-solid fa-chart-bar"></i>
-                    <span>Distribusi</span></a>
-            </li>
-
             <!-- Nav Item - Users -->
             <li class="nav-item <?php if( $this->uri->segment(1) == 'users' ) { echo 'active'; } ?>">
                 <a class="nav-link" href="<?= site_url('users'); ?>">

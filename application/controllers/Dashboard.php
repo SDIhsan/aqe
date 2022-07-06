@@ -32,13 +32,12 @@ class Dashboard extends CI_Controller {
         $data['shohibul'] = $this->mm->count_shohibul();
 		$data['tersembelih'] = $this->mm->count_tersembelih();
 		$data['pengeletan'] = $this->mm->count_pengeletan();
-		$data['daging'] = $this->mm->sum('tb_penimbangan', 'penimbangan_jumlah');
+		$data['daging'] = $this->mm->sum('tb_penimbangan', 'penimbangan_total');
 		$data['penimbangan'] = $this->mm->get('tb_penimbangan');
-		$data['distribusi'] = $this->mm->get('tb_distribusi');
 		$data['active'] = "active";
 		
 		$data['qurban'] = $this->mm->get('tb_qurban');
-		$data['dagingid'] = $this->mm->total_daging_shahibul('penimbangan_jumlah');
+		$data['dagingid'] = $this->mm->total_daging_shahibul('penimbangan_total');
 
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);
