@@ -100,7 +100,14 @@
                                     <a data-toggle="modal" data-target="#Update<?= $p['penimbangan_id'] ?>" title="" class="btn btn-link btn-warning" data-original-title="Update <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
                                         <i class="fa fa-fw text-success fa-edit"></i>
                                     </a>
-                                    <div class="modal fade" id="Update<?= $p['penimbangan_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    
+                                    <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= site_url('penimbangan/delete/') . $p['penimbangan_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
+                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                                
+                            </td>
+                            <div class="modal fade" id="Update<?= $p['penimbangan_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="row justify-content-center">
                                                 <div class="col">
@@ -147,20 +154,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= site_url('penimbangan/delete/') . $p['penimbangan_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
-                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
                         </tr>
+                        
                         <?php
                             endforeach;
                         endif;
                         ?>
                     </tbody>
                 </table>
+                
             </div>
         </div>
+        
     </div>
 
 </div>

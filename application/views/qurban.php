@@ -111,7 +111,24 @@
                                     <a data-toggle="modal" data-target="#editQurban<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-warning" data-original-title="Edit <?= $q['qurban_status'] ?>">
                                         <i class="fa fa-fw text-success fa-edit"></i>
                                     </a>
-                                    <div class="modal fade" id="editQurban<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    
+                                    <?php endif; ?>
+                                    <a data-toggle="modal" data-target="#UpdateStatusPenyembelihan<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-info" data-original-title="Update <?= $q['qurban_status'] ?>">
+                                        <i class="fa fa-fw text-white fa-solid fa-pen"></i>
+                                    </a>
+                                    
+                                    <a data-toggle="modal" data-target="#UpdateStatusPengeletan<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Update <?= $q['qurban_status'] ?>">
+                                        <i class="fa fa-fw text-white fa-solid fa-marker"></i>
+                                    </a>
+                                    
+                                    <?php if (is_admin()) : ?>
+                                    <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= base_url('qurban/delete/') . $q['qurban_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $q['qurban_status']; ?>">
+                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                            </td>
+                            <div class="modal fade" id="editQurban<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="row justify-content-center">
                                                 <div class="col">
@@ -166,11 +183,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endif; ?>
-                                    <a data-toggle="modal" data-target="#UpdateStatusPenyembelihan<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-info" data-original-title="Update <?= $q['qurban_status'] ?>">
-                                        <i class="fa fa-fw text-white fa-solid fa-pen"></i>
-                                    </a>
-                                    <div class="modal fade" id="UpdateStatusPenyembelihan<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal fade" id="UpdateStatusPenyembelihan<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="row justify-content-center">
                                                 <div class="col">
@@ -214,10 +227,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a data-toggle="modal" data-target="#UpdateStatusPengeletan<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Update <?= $q['qurban_status'] ?>">
-                                        <i class="fa fa-fw text-white fa-solid fa-marker"></i>
-                                    </a>
-                                    <div class="modal fade" id="UpdateStatusPengeletan<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal fade" id="UpdateStatusPengeletan<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="row justify-content-center">
                                                 <div class="col">
@@ -261,13 +271,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php if (is_admin()) : ?>
-                                    <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= base_url('qurban/delete/') . $q['qurban_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $q['qurban_status']; ?>">
-                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
-                                    </a>
-                                    <?php endif; ?>
-                                </div>
-                            </td>
                         </tr>
                         <?php
                             endforeach; ?>
