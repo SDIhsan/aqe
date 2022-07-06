@@ -208,7 +208,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="<?= site_url('users/editpassword/') . $d['user_id']; ?>" method="POST">
+                                                                <form action="<?= site_url('users/updatepassword/') . $d['user_id']; ?>" method="POST">
                                                                 <div class="row form-group">
                                                                     <label class="col-md-4 text-md-right" for="pass">Password</label>
                                                                     <div class="col-md-8">
