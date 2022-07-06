@@ -48,3 +48,41 @@ function output_json($data)
     $data = json_encode($data);
     $ci->output->set_content_type('application/json')->set_output($data);
 }
+
+function searchInMultidimensionalArray($value=NULL, $items=array()){
+    $ci = get_instance();
+    $getItems = [];
+    foreach ($items as $item_key => $itemDatas) {
+        if(is_array($itemDatas)){
+            foreach ($itemDatas as $dsdf =>$itemData) {
+                if (is_array($itemData)) {
+                    foreach ($itemData as $innerItems) {
+                        if (strpos(strtolower($innerItems), strtolower($value)) !== false || strpos(strtolower($value), strtolower($innerItems)) !== false) {
+                            array_push($getItems, $item_key);
+                        }
+                    }
+                } else{
+                    if( strstr($itemData, $value) !== false || strstr($itemData, strtolower($value)) !== false || strstr($itemData, strtoupper($value)) !== false ){
+                        array_push($getItems, $item_key);
+                    }
+                }
+            }
+        }else{
+            array_push($getItems, 0);
+        }
+    }
+    return array_unique($getItems);
+}
+
+function searchByValue($id, $array) {
+    $ci = get_instance();
+    foreach ($array as $key => $val) {
+        if ($val['penimbangan_qurban'] === $id) {
+            $resultSet['penimbangan_jumlah'] = $val['penimbangan_jumlah'];
+            $resultSet['key'] = $key;
+            $resultSet['penimbangan_qurban'] = $val['penimbangan_qurban'];
+            return $resultSet;
+        }
+    }
+    return null;
+}

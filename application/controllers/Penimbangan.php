@@ -12,6 +12,7 @@ class Penimbangan extends CI_Controller {
 
     public function index() 
     {
+        $data['title'] = 'Penimbangan';
         $this->db->join('tb_qurban', 'tb_penimbangan.penimbangan_qurban = tb_qurban.qurban_id');
         $data['penimbangan'] = $this->mm->get('tb_penimbangan');
         $data['qurban'] = $this->mm->get('tb_qurban');

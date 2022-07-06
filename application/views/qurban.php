@@ -15,18 +15,21 @@
                         <!-- <?= date('Y-m-d H:i:s P'); ?> -->
                     </h4>
                 </div>
+                <?php if (is_admin()) : ?>
                 <div class="col-auto">
                     <a class="btn btn-sm btn-primary btn-icon-split"  data-toggle="modal" data-target="#exampleModalCenter">
-                        <span class="icon">
-                            <i class="fa fa-plus"></i>
-                        </span>
+                        <!-- <span class="icon"> -->
+                            <i class="fa fa-fw fa-solid fa-lg fa-square-plus"></i>
+                        <!-- </span> -->
                         <span class="text">
                             Add Kelompok
                         </span>
                     </a>
                 </div>
+                <?php endif; ?>
             </div>            
         </div>
+        <?php if (is_admin()) : ?>
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -64,17 +67,18 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th>Kelompok</th>
-                            <th>Shohibul</th>
-                            <th>Penyembelihan</th>
-                            <th>Pengeletan</th>
-                            <th>Action</th>
+                        <tr class="bg-dark text-white">
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center">Kelompok</th>
+                            <th class="text-center">Shohibul</th>
+                            <th class="text-center">Penyembelihan</th>
+                            <th class="text-center">Pengeletan</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,25 +88,26 @@
                             foreach ($qurban as $q) :
                         ?>
                         <tr>
-                            <td scope="row"><?= $no++; ?></td>
-                            <td><?= $q['qurban_status'] . ' ' . $q['qurban_nomor']; ?></td>
-                            <td><?= $q['qurban_shohibul']; ?></td>
-                            <td>
+                            <td class=" align-middle font-weight-bolder text-center" scope="row" width="5%" class=""><?= $no++; ?></td>
+                            <td class=" align-middle" width="<?php if (is_admin()) { echo '20%'; } else { echo '25%'; } ?>"><?= $q['qurban_status'] . ' ' . $q['qurban_nomor']; ?></td>
+                            <td class=" align-middle" width="<?php if (is_admin()) { echo '19%'; } else { echo '24%'; } ?>"><?= $q['qurban_shohibul']; ?></td>
+                            <td class=" align-middle text-center" width="17%">
                             <?php if($q['qurban_sembelih'] == null) { 
-                                echo 'Belum';
+                                echo '<i class="bg-danger pl-5 pt-1 pr-5 pb-1 text-white rounded text-decoration-none" style="font-style: normal;">Belum</i>';
                             } else {
-                                echo date_format(new DateTime($q['qurban_sembelih']), 'H:i:s');
+                                echo '<i class="bg-success text-white rounded text-decoration-none" style="padding: 4px 41px 4px 41px; font-style: normal;">' . date_format(new DateTime($q['qurban_sembelih']), 'H:i:s') . '</i>';
                             }; ?>
                             </td>
-                            <td>
+                            <td class=" align-middle text-center" width="17%">
                             <?php if($q['qurban_pengeletan'] == null) { 
-                                echo 'Belum';
+                                echo '<i class="bg-danger pl-5 pt-1 pr-5 pb-1 text-white rounded text-decoration-none" style="font-style: normal;">Belum</i>';
                             } else {
-                                echo $q['qurban_pengeletan'];
+                                echo '<i class="bg-success text-white rounded text-decoration-none" style="padding: 4px 41px 4px 41px; font-style: normal;">' . date_format(new DateTime($q['qurban_pengeletan']), 'H:i:s') . '</i>';
                             }; ?>
                             </td>
-                            <td>
+                            <td class=" align-middle text-center" width="<?php if (is_admin()) { echo '22%'; } else { echo '12%'; } ?>">
                                 <div class="form-button-action">
+                                    <?php if (is_admin()) : ?>
                                     <a data-toggle="modal" data-target="#editQurban<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-warning" data-original-title="Edit <?= $q['qurban_status'] ?>">
                                         <i class="fa fa-fw text-success fa-edit"></i>
                                     </a>
@@ -161,8 +166,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php endif; ?>
                                     <a data-toggle="modal" data-target="#UpdateStatusPenyembelihan<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-info" data-original-title="Update <?= $q['qurban_status'] ?>">
-                                        <i class="fa fa-fw text-secondary fa-edit"></i>
+                                        <i class="fa fa-fw text-white fa-solid fa-pen"></i>
                                     </a>
                                     <div class="modal fade" id="UpdateStatusPenyembelihan<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -209,7 +215,7 @@
                                         </div>
                                     </div>
                                     <a data-toggle="modal" data-target="#UpdateStatusPengeletan<?= $q['qurban_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Update <?= $q['qurban_status'] ?>">
-                                        <i class="fa fa-fw text-danger fa-edit"></i>
+                                        <i class="fa fa-fw text-white fa-solid fa-marker"></i>
                                     </a>
                                     <div class="modal fade" id="UpdateStatusPengeletan<?= $q['qurban_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -255,9 +261,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if (is_admin()) : ?>
                                     <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= base_url('qurban/delete/') . $q['qurban_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $q['qurban_status']; ?>">
-                                        <i class="fa fa-fw text-warning fa-times"></i>
+                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
                                     </a>
+                                    <?php endif; ?>
                                 </div>
                             </td>
                         </tr>

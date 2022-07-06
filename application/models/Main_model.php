@@ -51,11 +51,6 @@ class Main_model extends CI_Model
     {
 		$this->db->select('*');
         $this->db->from($table);
-        // if ($like != null) {
-        //     $this->db->where([$col => $like]);
-        // } else {
-        //     $this->db->where($col);
-        // }
         $this->db->where([$col => $like]);
         return $this->db->count_all_results();
     }
@@ -96,5 +91,58 @@ class Main_model extends CI_Model
         $this->db->join('tb_qurban', 'tb_penimbangan.penimbangan_qurban = tb_qurban.qurban_id');
         $this->db->group_by('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
         return $this->db->get('tb_penimbangan')->result_array();
+    }
+
+    public function max_ke($table, $field)
+    {
+        $this->db->select_max($field);
+        return $this->db->get($table)->row_array()[$field];
+    }
+
+    public function rekap_daging()
+    {
+        // $this->db->select('*');
+        // $this->db->join('tb_qurban as tq', 'tp.penimbangan_qurban = tq.qurban_id');
+        // $this->db->group_by('tp.penimbangan_ke, tp.penimbangan_id, tq.qurban_id');
+        // return $this->db->get('tb_penimbangan as tp')->result_array();
+        return $this->db->query('select * from tb_penimbangan as tp join tb_qurban as tq on tp.penimbangan_qurban = tq.qurban_id order by tp.penimbangan_ke')->result_array();
+    }
+
+    public function rekap_daging_max($no)
+    {
+        // return $this->db->query('select * from tb_penimbangan as tp join tb_qurban as tq on tp.penimbangan_qurban = tq.qurban_id where penimbangan_ke =' . $no . ' order by tp.penimbangan_ke')->result_array();
+        return $this->db->query('select penimbangan_qurban, penimbangan_jumlah from tb_penimbangan where penimbangan_ke = ' . $no . ' order by penimbangan_qurban')->result_array();
+    }
+
+    public function rekap_daging_max2($no)
+    {
+        return $this->db->query('select penimbangan_qurban, penimbangan_jumlah from tb_penimbangan where penimbangan_ke = ' . $no . ' order by penimbangan_qurban')->result();
+    }
+
+    public function count($table)
+    {
+        return $this->db->count_all($table);
+    }
+
+    public function timbangan_pi($pq)
+    {
+        return $this->db->query('select penimbangan_ke, penimbangan_qurban, penimbangan_jumlah from tb_penimbangan where penimbangan_qurban = ' . $pq . ' order by penimbangan_ke')->result_array();
+    }
+
+    public function get_select($table, $s)
+    {
+        return $this->db->query('select ' . $s . ' from ' . $table .' order by ' . $s . ';')->result_array();
+    }
+
+    public function count_row($table, $field, $id)
+    {
+        $this->db->where($field, $id);
+        return $this->db->get($table)->num_rows();
+
+    }
+
+    function get_qurban(){
+        $hasil = $this->db->query("SELECT * FROM tb_qurban");
+        return $hasil->result();
     }
 }

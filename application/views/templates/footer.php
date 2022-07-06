@@ -32,7 +32,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= site_url('auth'); ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?= site_url('auth/logout'); ?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -52,8 +52,10 @@
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url('assets/') ?>js/sb-admin-2.min.js"></script>
     <!-- Page level plugins -->
-    <script src="<?= base_url('assets/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
+    <!-- <script src="<?= base_url('assets/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<?= base_url('assets/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url('assets/') ?>vendor/datatables/responsive/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url('assets/') ?>vendor/datatables/responsive/responsive.bootstrap.min.js"></script> -->
 
 
     <!-- Page level custom scripts -->
@@ -61,8 +63,64 @@
     
     <!-- <script src="<?= base_url('assets/') ?>js/demo/chart-pie-demo.js"></script> -->
     <!-- <script src="<?= base_url('assets/') ?>js/demo/chart-bar-demo.js"></script> -->
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script> -->
+    <!-- <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jszip-2.5.0/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/fc-4.1.0/fh-3.2.4/kt-2.7.0/r-2.3.0/rg-1.2.0/rr-1.2.8/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+    <?php if ($this->uri->segment(1) == 'example') : ?>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                show_data_qurban();   //pemanggilan fungsi tampil 
+                
+                //fungsi tampil barang
+                function show_data_qurban(){
+                    $.ajax({
+                        type  : 'GET',
+                        url   : '<?= site_url('example/get'); ?>',
+                        async : true,
+                        dataType : 'json',
+                        success : function(data){
+                            var html = '';
+                            var i;
+                            var no = 1;
+                            for(i = 0; i < data.length; i++){
+                                html += '<tr>'+
+                                        '<td class=" align-middle font-weight-bolder text-center" scope="row" width="5%">' + no++ + '</td>'+
+                                        '<td class=" align-middle" width="<?php if (is_admin()) { echo '20%'; } else { echo '25%'; } ?>">' + data[i].qurban_status + ' ' + data[i].qurban_nomor + '</td>'+
+                                        '<td class=" align-middle" width="<?php if (is_admin()) { echo '19%'; } else { echo '24%'; } ?>">' + data[i].qurban_shohibul + '</td>'+
+                                        '</tr>';
+                            }
+                            $('#dataQurban').html(html);
+                        }
+                    });
+                }
+            });
+        </script>
+    <?php endif; ?>
     <?php if($this->uri->segment(1) == 'dashboard') : ?>
     <script type="text/javascript">
+        // dataTables
+        $(document).ready(function() {
+
+            var dashtable = $('#dashboardTable').DataTable( {
+                responsive: true,
+                searhing: false,
+                paging: false,
+                info: false,
+                bFilter: false,
+                bInfo: false
+            });
+
+            new $.fn.dataTable.FixedHeader( dashtable );
+        });
+
         // Set new default font family and font color to mimic Bootstrap's default styling
         Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
         Chart.defaults.global.defaultFontColor = '#858796';
@@ -273,10 +331,14 @@
 
     </script>
     <?php else : ?>
-    <script>
-        $(document).ready( function () {
-            $('#myTable').DataTable();
-        } );
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#myTable').DataTable( {
+                responsive: true
+            } );
+        
+            new $.fn.dataTable.FixedHeader( table );
+        });
     </script>
     <?php endif; ?>
 </body>

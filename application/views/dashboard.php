@@ -25,7 +25,7 @@
                                     <div class="h2 mb-0 mr-2 ml-1 font-weight-bold text-gray-800"><?= $tersembelih; ?></div>
                                 </div>
                                 <div class="col">
-                                    <div class="progress mr-2">
+                                    <div class="progress mr-2" id="tersembelih">
                                         <div class="progress-bar bg-info" role="progressbar"
                                             style="width: <?= $tersembelih / $shohibul * 100; ?>%" aria-valuenow="50" aria-valuemin="0"
                                             aria-valuemax="100"><?= $tersembelih; ?>/<?= $shohibul; ?></div>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            <i class="fas fa-solid fa-clipboard-list fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-solid fa-clipboard-check fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            <i class="fas fa-solid fa-weight fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                             <div class="h3 mb-0 font-weight-bold text-gray-800"><?= number_format((float)$daging / 3, 2, '.',''); ?> Kg</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <i class="fas fa-solid fa-cubes fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -127,6 +127,7 @@
                     <hr>
                     <div class="chart-area">
                         <canvas id="myAreaChart"></canvas>
+                        <!-- <canvas id="myQurbanChart"></canvas> -->
                     </div>
                 </div>
             </div>
@@ -161,15 +162,14 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table" id="dashboardTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Kelompok / Pribadi</th>
-                                    <th>Total Daging</th>
-                                    <th>Sepertiga Bagian</th>
-                                    <th>Daging @Shohibul</th>
-                                    <!-- <th>Action</th> -->
+                                    <th class=" align-middle" width="5%">#</th>
+                                    <th class=" align-middle" width="35%">Kelompok / Pribadi</th>
+                                    <th class=" align-middle" width="20%">Total Daging</th>
+                                    <th class=" align-middle" width="20%">Sepertiga Bagian</th>
+                                    <th class=" align-middle" width="20%">Daging @Shohibul</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,17 +179,17 @@
                                     foreach ($dagingid as $di) :
                                 ?>
                                 <tr>
-                                    <td><?= $no++; ?></td>
+                                    <td class="font-weight-bold"><?= $no++; ?></td>
                                     <td><?= $di['qurban_status'] . ' ' . $di['qurban_nomor'] . ' (' . $di['qurban_shohibul'] .')'; ?></td>
                                     <td><?= number_format((float)$di['total'], 2, '.', ''); ?></td>
-                                    <th>
+                                    <td>
                                         <?php $st = $di['total']/3; 
                                         echo number_format((float)$st, 2, '.', ''); 
                                         ?>
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         <?= number_format(((float)$st-2)/7, 2, '.', ''); ?>
-                                    </th>
+                                    </td>
                                 </tr>
                                 <?php
                                     endforeach;
@@ -205,12 +205,12 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table" id="dashboardTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Distribusi</th>
-                                    <th>Massa (KG)</th>
+                                    <th class="align-middle">#</th>
+                                    <th class="align-middle">Distribusi</th>
+                                    <th class="align-middle">Massa (KG)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -221,7 +221,7 @@
                                     foreach ($distribusi as $dt) :
                                 ?>
                                 <tr>
-                                    <td><?= $no++; ?></td>
+                                    <td class="font-weight-bold"><?= $no++; ?></td>
                                     <td><?= $dt['distribusi_ket']; ?></td>
                                     <td><?= number_format((float)$dt['distribusi_jumlah'], 2, '.', ''); ?></td>
                                 </tr>
@@ -233,7 +233,7 @@
                             </tbody>
                         </table>
                         <hr>
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table" id="dashboardTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>Total</th>

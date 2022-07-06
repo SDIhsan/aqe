@@ -28,7 +28,7 @@ class Dashboard extends CI_Controller {
 
     public function index() 
     {
-        $data['title'] = 'Qurban';
+        $data['title'] = 'Dashboard';
         $data['shohibul'] = $this->mm->count_shohibul();
 		$data['tersembelih'] = $this->mm->count_tersembelih();
 		$data['pengeletan'] = $this->mm->count_pengeletan();
@@ -47,4 +47,16 @@ class Dashboard extends CI_Controller {
 		// $this->load->view('templates/script.php');
         $this->load->view('templates/footer.php');
     }
+
+	public function get_tersembelih()
+	{
+		$tersembelih = $this->mm->count_tersembelih();
+		// $pengeletan = $this->mm->count_pengeletan();
+		$shohibul = $this->mm->count_shohibul();
+		$data = [
+			'tersembelih' => $tersembelih, 
+			'shohibul' => $shohibul
+		];
+		echo json_encode($data);
+	}
 }

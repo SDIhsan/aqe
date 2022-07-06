@@ -5,7 +5,7 @@ class Distribusi extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        check_login();
+        // cek_login();
         $this->load->model('Main_model', 'mm');
         $this->load->library('form_validation');
     }

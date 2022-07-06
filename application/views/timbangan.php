@@ -14,10 +14,10 @@
                     </h4>
                 </div>
                 <div class="col-auto">
-                <a class="btn btn-sm btn-primary btn-icon-split"  data-toggle="modal" data-target="#exampleModalCenter">
-                        <span class="icon">
-                            <i class="fa fa-plus"></i>
-                        </span>
+                    <a class="btn btn-sm btn-primary btn-icon-split"  data-toggle="modal" data-target="#exampleModalCenter">
+                        <!-- <span class="icon"> -->
+                        <i class="fa fa-fw fa-solid fa-lg fa-square-plus"></i>
+                        <!-- </span> -->
                         <span class="text">
                             Add Timbang
                         </span>
@@ -74,14 +74,14 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Status - Shohibul</th>
-                            <th>Ke</th>
-                            <th>Jumlah</th>
-                            <th>Action</th>
+                        <tr class="bg-dark text-white">
+                            <th class="text-center">#</th>
+                            <th class="text-center">Status (Kelompok / Pribadi) - Shohibul</th>
+                            <th class="text-center">Ke</th>
+                            <th class="text-center">Massa (Kg)</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,14 +91,14 @@
                             foreach ($penimbangan as $p) :
                         ?>
                         <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?></td>
-                            <td><?= $p['penimbangan_ke']; ?></td>
-                            <td><?= $p['penimbangan_jumlah']; ?></td>
-                            <td>
+                            <td class=" align-middle font-weight-bold text-center" width="5%"><?= $no++; ?></td>
+                            <td class=" align-middle" width="53%"><?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?></td>
+                            <td class=" align-middle text-center" width="10%"><?= $p['penimbangan_ke']; ?></td>
+                            <td class=" align-middle text-center" width="20%"><?= $p['penimbangan_jumlah']; ?></td>
+                            <td class=" align-middle text-center" width="12%">
                                 <div class="form-button-action">
-                                    <a data-toggle="modal" data-target="#Update<?= $p['penimbangan_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Update <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
-                                        <i class="fa fa-fw text-danger fa-edit"></i>
+                                    <a data-toggle="modal" data-target="#Update<?= $p['penimbangan_id'] ?>" title="" class="btn btn-link btn-warning" data-original-title="Update <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
+                                        <i class="fa fa-fw text-success fa-edit"></i>
                                     </a>
                                     <div class="modal fade" id="Update<?= $p['penimbangan_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -148,7 +148,7 @@
                                         </div>
                                     </div>
                                     <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= site_url('penimbangan/delete/') . $p['penimbangan_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $p['qurban_status'] . ' ' . $p['qurban_nomor'] . ' - ' . $p['qurban_shohibul']; ?>">
-                                        <i class="fa fa-fw text-warning fa-times"></i>
+                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
                                     </a>
                                 </div>
                             </td>

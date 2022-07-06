@@ -15,9 +15,9 @@
                 </div>
                 <div class="col-auto">
                     <a class="btn btn-sm btn-primary btn-icon-split"  data-toggle="modal" data-target="#exampleModalCenter">
-                        <span class="icon">
-                            <i class="fa fa-plus"></i>
-                        </span>
+                        <!-- <span class="icon"> -->
+                        <i class="fa fa-fw fa-solid fa-lg fa-square-plus"></i>
+                        <!-- </span> -->
                         <span class="text">
                             Add Users
                         </span>
@@ -71,14 +71,14 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
+                <table id="myTable" class="table table-bordered" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th>Username</th>
-                            <th>Level</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                        <tr class="bg-dark text-white">
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center">Username</th>
+                            <th class="text-center">Level</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,25 +87,25 @@
                         if ($user) :
                             foreach ($user as $d) :
                         ?>
-                        <tr>
-                            <td scope="row"><?=$no++; ?></td>
-                            <td><?= $d['user_name']; ?></td>
-                            <td><?= $d['user_level']; ?></td>
-                            <td>
+                        <tr >
+                            <td class=" align-middle font-weight-bold text-center" width="5%" scope="row"><?=$no++; ?></td>
+                            <td class=" align-middle" width="40%"><?= $d['user_name']; ?></td>
+                            <td class=" align-middle text-center" width="16%"><?= $d['user_level']; ?></td>
+                            <td class=" align-middle text-center" width="17%">
                                 <?php
                                 if ($d['user_status'] == 1) {
-                                    echo 'Aktif';
+                                    echo '<i class="bg-success pl-5 pt-1 pr-5 pb-1 text-white rounded text-decoration-none" style="font-style: normal;">Aktif</i>';
                                 } else {
-                                    echo 'Tidak Aktif';
+                                    echo '<i class="bg-danger pl-5 pt-1 pr-5 pb-1 text-white rounded text-decoration-none" style="font-style: normal;">Tidak Aktif</i>';
                                 };
                                 ?>
                             </td>
-                            <td>
+                            <td class=" align-middle text-center" width="22%">
                                 <div class="form-button-action">
-                                    <a data-toggle="modal" data-target="#Edit <?= $d['user_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Edit <?= $d['user_name']; ?>">
-                                        <i class="fa fa-fw text-danger fa-edit"></i>
+                                    <a data-toggle="modal" data-target="#Edit<?= $d['user_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Edit <?= $d['user_name']; ?>">
+                                        <i class="fa fa-fw text-light fa-edit"></i>
                                     </a>
-                                    <div class="modal fade" id="Edit <?= $d['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="Edit<?= $d['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="row justify-content-center">
                                                 <div class="col">
@@ -152,7 +152,7 @@
                                         </div>
                                     </div>
                                     <a data-toggle="modal" data-target="#EditStatus<?= $d['user_id'] ?>" title="Edit Status <?= $d['user_name']; ?>" class="btn btn-link btn-warning" data-original-title="Edit Status <?= $d['user_name']; ?>">
-                                        <i class="fa fa-fw text-danger fa-edit"></i>
+                                        <i class="fa fa-fw text-success fa-solid fa-power-off"></i>
                                     </a>
                                     <div class="modal fade" id="EditStatus<?= $d['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -193,7 +193,7 @@
                                         </div>
                                     </div>
                                     <a data-toggle="modal" data-target="#EditPassword<?= $d['user_id'] ?>" title="Edit Password <?= $d['user_name']; ?>" class="btn btn-link btn-info" data-original-title="Edit Password <?= $d['user_name']; ?>">
-                                        <i class="fa fa-fw text-danger fa-edit"></i>
+                                        <i class="fa fa-fw text-danger fa-solid fa-key"></i>
                                     </a>
                                     <div class="modal fade" id="EditPassword<?= $d['user_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -233,7 +233,7 @@
                                         </div>
                                     </div>
                                     <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= site_url('users/delete/') . $d['user_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $d['user_name'] . ' ' . $d['user_level']; ?>">
-                                        <i class="fa fa-fw text-warning fa-times"></i>
+                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
                                     </a>
                                 </div>
                             </td>

@@ -15,9 +15,9 @@
                 </div>
                 <div class="col-auto">
                     <a class="btn btn-sm btn-primary btn-icon-split"  data-toggle="modal" data-target="#exampleModalCenter">
-                        <span class="icon">
-                            <i class="fa fa-plus"></i>
-                        </span>
+                        <!-- <span class="icon"> -->
+                        <i class="fa fa-fw fa-solid fa-lg fa-square-plus"></i>
+                        <!-- </span> -->
                         <span class="text">
                             Add Distribusi
                         </span>
@@ -60,25 +60,15 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Keterangan</th>
-                            <th>Jumlah</th>
-                            <th>Action</th>
+                        <tr class="bg-dark text-white">
+                            <th class="text-center">#</th>
+                            <th class="text-center">Keterangan</th>
+                            <th class="text-center">Jumlah</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <!-- <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </tfoot> -->
                     <tbody>
                         <?php
                         $no = 1;
@@ -86,13 +76,13 @@
                             foreach ($distribusi as $d) :
                         ?>
                         <tr>
-                            <td><?=$no++; ?></td>
-                            <td><?= $d['distribusi_ket']; ?></td>
-                            <td><?= $d['distribusi_jumlah']; ?></td>
-                            <td>
+                            <td class=" align-middle font-weight-bold text-center" width="5%"><?=$no++; ?></td>
+                            <td class=" align-middle" width="60%"><?= $d['distribusi_ket']; ?></td>
+                            <td class=" align-middle text-center" width="23%"><?= $d['distribusi_jumlah']; ?></td>
+                            <td class=" align-middle text-center" width="12%">
                                 <div class="form-button-action">
-                                    <a data-toggle="modal" data-target="#Update<?= $d['distribusi_id'] ?>" title="" class="btn btn-link btn-success" data-original-title="Update <?= $d['distribusi_ket'] ?>">
-                                        <i class="fa fa-fw text-danger fa-edit"></i>
+                                    <a data-toggle="modal" data-target="#Update<?= $d['distribusi_id'] ?>" title="" class="btn btn-link btn-warning" data-original-title="Update <?= $d['distribusi_ket'] ?>">
+                                        <i class="fa fa-fw text-success fa-edit"></i>
                                     </a>
                                     <div class="modal fade" id="Update<?= $d['distribusi_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -139,7 +129,7 @@
                                         </div>
                                     </div>
                                     <a onclick="return confirm('Yakin ingin hapus?')"  href="<?= base_url('distribusi/delete/') . $d['distribusi_id'] ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove <?= $d['distribusi_ket']; ?>">
-                                        <i class="fa fa-fw text-warning fa-times"></i>
+                                        <i class="fa fa-fw text-warning fa-solid fa-trash"></i>
                                     </a>
                                 </div>
                             </td>
