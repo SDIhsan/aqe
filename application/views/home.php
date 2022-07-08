@@ -33,7 +33,7 @@
 
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid" id="div_refresh">
 
     <!-- Page Heading -->
     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -331,6 +331,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+        // setInterval(function(){
+        //     $('#div_refresh').load('home');
+        // }, 10000) 
+        /* time in milliseconds (ie 10 seconds)*/
         // dataTables
         $(document).ready(function() {
 
