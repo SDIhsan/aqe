@@ -163,11 +163,11 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                        Total 2/3 Daging Setelah Dikurangi 3.5Kg
+                                        Total 2/3 Daging
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
-                                            <div class="h3 mb-0 mr-3 font-weight-bold text-gray-800"><?= number_format((float)($daging * 2 / 3) - (3.5 * $kelompok), 2, '.', ''); ?> Kg</div>
+                                            <div class="h3 mb-0 mr-3 font-weight-bold text-gray-800"><?= number_format((float)($daging * 2 / 3), 2, '.', ''); ?> Kg</div>
                                         </div>
                                     </div>
                                 </div>
