@@ -38,6 +38,14 @@
                             <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
                             <div class="col-lg-12">
                                 <div class="p-5">
+                                    <div class="col-auto">
+                                        <a href="<?= site_url('home'); ?>" class="btn btn-sm btn-danger btn-icon-split">
+                                        <!-- <i class="fa fa-fw fa-solid fa-lg fa-arrow-left"></i> -->
+                                            <span class="text">
+                                                Back
+                                            </span>
+                                        </a>
+                                    </div>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                         <?= $this->session->flashdata('message'); ?>

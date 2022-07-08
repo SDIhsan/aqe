@@ -13,6 +13,7 @@ class Qurban extends CI_Controller {
     public function index() 
     {
         $data['title'] = 'Qurban';
+        $this->db->order_by('qurban_status, qurban_nomor');
         $data['qurban'] = $this->mm->get('tb_qurban');
         
         $this->load->view('templates/header.php', $data);

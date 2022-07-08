@@ -16,6 +16,7 @@ class Users extends CI_Controller {
     public function index() 
     {
         $data['title'] = 'Users';
+        $this->db->order_by('user_name');
         $data['user'] = $this->mm->get('tb_user');
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);

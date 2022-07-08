@@ -86,10 +86,12 @@ class Main_model extends CI_Model
 
     public function total_daging_shahibul($field)
     {
-        $this->db->select('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
-        $this->db->select_sum($field, 'total');
+        // $this->db->select('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
+        $this->db->select('*');
+        
         $this->db->join('tb_qurban', 'tb_penimbangan.penimbangan_qurban = tb_qurban.qurban_id');
-        $this->db->group_by('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
+        // $this->db->group_by('penimbangan_qurban, qurban_status, qurban_nomor, qurban_shohibul');
+        $this->db->order_by('qurban_status, qurban_nomor');
         return $this->db->get('tb_penimbangan')->result_array();
     }
 
