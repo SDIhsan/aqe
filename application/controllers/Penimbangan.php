@@ -16,6 +16,7 @@ class Penimbangan extends CI_Controller {
         $this->db->join('tb_qurban', 'tb_penimbangan.penimbangan_qurban = tb_qurban.qurban_id');
         $data['penimbangan'] = $this->mm->get('tb_penimbangan');
         $this->db->order_by('qurban_status, qurban_nomor');
+        $this->db->where('qurban_id NOT IN (SELECT penimbangan_qurban FROM tb_penimbangan)');
         $data['qurban'] = $this->mm->get('tb_qurban');
         $this->load->view('templates/header.php', $data);
         $this->load->view('templates/sidebar.php', $data);
