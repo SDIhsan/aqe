@@ -255,14 +255,14 @@
                                     <td><?= date_format(new DateTime($di['qurban_pengeletan']), 'H:i:s'); ?></td>
                                     <td><?= number_format((float)$di['penimbangan_total'], 2, '.', ''); ?></td>
                                     <td>
-                                        <?php $st = $di['penimbangan_total']/3; 
+                                        <?php $st = $di['penimbangan_total'] / 3; 
                                         echo number_format((float)$st, 2, '.', ''); 
                                         ?>
                                     </td>
                                     <td>
                                         <?php 
                                         if (strstr($di['qurban_status'],"Kelompok") != false) {
-                                            echo number_format(((float)$st - 2) / 7, 2, '.', '');
+                                            echo number_format(((float)$st - 3.5) / 7, 2, '.', '');
                                         } else if (strstr($di['qurban_status'], "Pribadi") != false) {
                                             echo number_format((float)$di['penimbangan_total'] / 3, 2, '.', ''); 
                                         }
