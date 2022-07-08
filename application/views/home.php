@@ -260,7 +260,13 @@
                                         ?>
                                     </td>
                                     <td>
-                                        <?= number_format(((float)$st-2)/7, 2, '.', ''); ?>
+                                        <?php 
+                                        if (strstr($di['qurban_status'],"Kelompok") != false) {
+                                            echo number_format(((float)$st - 2) / 7, 2, '.', '');
+                                        } else if (strstr($di['qurban_status'], "Pribadi") != false) {
+                                            echo number_format((float)$di['penimbangan_total'] / 3, 2, '.', ''); 
+                                        }
+                                        ?>
                                     </td>
                                 </tr>
                                 <?php
