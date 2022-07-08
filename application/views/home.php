@@ -33,7 +33,7 @@
 
 <!-- End of Topbar -->
 <!-- Begin Page Content -->
-<div class="container-fluid" id="div_refresh">
+<div class="container-fluid">
 
     <!-- Page Heading -->
     <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
